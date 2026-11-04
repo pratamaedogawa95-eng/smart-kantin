@@ -23,12 +23,15 @@ ENV PORT=8080
 
 WORKDIR /var/www/html
 
-# Salik semua file proyek
+# Salin semua file proyek
 COPY . /var/www/html
 
 # Jalankan composer install untuk mengunduh folder vendor secara otomatis di server
 RUN composer install --no-dev --optimize-autoloader
 
-RUN chown -R www-data:www-data /var/www/html/writable /var/www/html/public
+# Buat direktori writable beserta subfoldernya dan berikan izin akses penuh
+RUN mkdir -p writable/cache writable/logs writable/session \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 777 writable
 
 EXPOSE 8080
