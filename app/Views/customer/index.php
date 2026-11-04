@@ -62,7 +62,7 @@
                                 <!-- Gambar Menu -->
                                 <div class="relative h-32 bg-gray-100">
                                     <template x-if="menu.foto">
-                                        <img :src="'<?= base_url('uploads/menu/') ?>" :alt="menu.nama_menu" class="w-full h-full object-cover">
+                                        <img :src="'<?= base_url('uploads/menu/') ?>' + menu.foto" :alt="menu.nama_menu" class="w-full h-full object-cover">
                                     </template>
                                     <template x-if="!menu.foto">
                                         <div class="w-full h-full flex items-center justify-center text-gray-300 text-xs font-medium bg-gray-50">
