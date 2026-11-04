@@ -29,11 +29,8 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
  *---------------------------------------------------------------
  */
 
-// Path ke folder public (FCPATH)
+// Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
-
-// Tentukan root directory aplikasi (satu level di atas public)
-define('ROOTPATH', realpath(FCPATH . '../') . DIRECTORY_SEPARATOR);
 
 // Ensure the current directory is pointing to the front controller's directory
 if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
@@ -47,13 +44,10 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  */
 
 // LOAD OUR PATHS CONFIG FILE
-require ROOTPATH . 'app/Config/Paths.php';
-$paths = new Config\Paths();
-
-// OVERRIDE systemDirectory agar selalu mengarah secara absolut ke folder vendor
-$paths->systemDirectory = ROOTPATH . 'vendor/codeigniter4/framework/system';
+require FCPATH . '../app/Config/Paths.php';
+$paths = new Paths();
 
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
-require rtrim($paths->systemDirectory, '/\\') . '/Boot.php';
+require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'Boot.php';
 
 exit(Boot::bootWeb($paths));
