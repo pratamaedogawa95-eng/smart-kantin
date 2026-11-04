@@ -47,13 +47,13 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  */
 
 // LOAD OUR PATHS CONFIG FILE
-// This is the line that might need to be changed, depending on your folder structure.
+// Karena file index.php ini berada di dalam folder `public/`, 
+// kita mundur satu level ke root utama (../) untuk menemukan folder `app/`.
 require FCPATH . '../app/Config/Paths.php';
-// ^^^ Change this line if you move your application folder
 
 $paths = new Paths();
 
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
-require $paths->systemDirectory . '/Boot.php';
+require rtrim($paths->systemDirectory, '/\\') . '/Boot.php';
 
 exit(Boot::bootWeb($paths));
