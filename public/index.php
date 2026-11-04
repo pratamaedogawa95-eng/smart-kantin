@@ -9,7 +9,7 @@ use Config\Paths;
  *---------------------------------------------------------------
  */
 
-$minPhpVersion = '8.2'; // If you update this, don't forget to update `spark`.
+$minPhpVersion = '8.2';
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     $message = sprintf(
         'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
@@ -29,8 +29,11 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
  *---------------------------------------------------------------
  */
 
-// Path to the front controller (this file)
+// Path ke folder public (FCPATH)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+
+// Tentukan root directory aplikasi (satu level di atas public)
+define('ROOTPATH', realpath(FCPATH . '../') . DIRECTORY_SEPARATOR);
 
 // Ensure the current directory is pointing to the front controller's directory
 if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
@@ -41,17 +44,13 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  *---------------------------------------------------------------
  * BOOTSTRAP THE APPLICATION
  *---------------------------------------------------------------
- * This process sets up the path constants, loads and registers
- * our autoloader, along with Composer's, loads our constants
- * and fires up an environment-specific bootstrapping.
  */
 
-// LOAD OUR PATHS CONFIG FILE
-require FCPATH . '../app/Config/Paths.php';
+// LOAD OUR PATHS CONFIG FILE menggunakan ROOTPATH yang absolut
+require ROOTPATH . 'app/Config/Paths.php';
 $paths = new Config\Paths();
 
-// LOAD THE FRAMEWORK BOOTSTRAP FILE
-// Menggunakan path mutlak mundur satu level dari folder public ke root project
-require FCPATH . '../vendor/codeigniter4/framework/system/Boot.php';
+// LOAD THE FRAMEWORK BOOTSTRAP FILE menggunakan ROOTPATH yang absolut
+require ROOTPATH . 'vendor/codeigniter4/framework/system/Boot.php';
 
 exit(Boot::bootWeb($paths));
