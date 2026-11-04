@@ -36,8 +36,8 @@ class Admin extends BaseController
         $laporanTenant = $this->tenantModel
             ->select('tenants.id, tenants.nama_tenant, tenants.nomor_stand, SUM(order_items.qty * order_items.harga_satuan) as omzet_tenant, COUNT(DISTINCT order_items.order_id) as total_pesanan')
             ->join('order_items', 'order_items.tenant_id = tenants.id', 'left')
-            ->join('orders', 'orders.id = order_items.order_id AND orders.status_bayar = "lunas"', 'left')
-            ->groupBy('tenants.id')
+            ->join('orders', "orders.id = order_items.order_id AND orders.status_bayar = 'lunas'", 'left')
+            ->groupBy(['tenants.id', 'tenants.nama_tenant', 'tenants.nomor_stand'])
             ->findAll();
 
         $data = [
@@ -98,8 +98,8 @@ class Admin extends BaseController
         $laporanTenant = $this->tenantModel
             ->select('tenants.id, tenants.nama_tenant, tenants.nomor_stand, SUM(order_items.qty * order_items.harga_satuan) as omzet_tenant, COUNT(DISTINCT order_items.order_id) as total_pesanan')
             ->join('order_items', 'order_items.tenant_id = tenants.id', 'left')
-            ->join('orders', 'orders.id = order_items.order_id AND orders.status_bayar = "lunas"', 'left')
-            ->groupBy('tenants.id')
+            ->join('orders', "orders.id = order_items.order_id AND orders.status_bayar = 'lunas'", 'left')
+            ->groupBy(['tenants.id', 'tenants.nama_tenant', 'tenants.nomor_stand'])
             ->findAll();
 
         return $this->response->setJSON([
