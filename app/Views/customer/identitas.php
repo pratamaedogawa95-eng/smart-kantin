@@ -19,7 +19,7 @@
         </div>
 
         <!-- Form Input -->
-        <form action="<?= base_url('customer/simpan-identitas') ?>" method="post" class="space-y-4">
+        <form action="/customer/simpan-identitas" method="post" class="space-y-4">
             <?= csrf_field() ?>
             <input type="hidden" name="nomor_meja" value="<?= esc($nomor_meja) ?>">
 
@@ -101,8 +101,7 @@
                     this.loading = true;
                     this.found = false;
 
-                    // Menggunakan base_url dinamis atau URL relatif yang aman untuk fetch AJAX
-                    fetch(`<?= base_url('customer/cari-civitas') ?>?q=${encodeURIComponent(this.nomorInduk)}&tipe=${this.tipe}`, {
+                    fetch(`/customer/cari-civitas?q=${encodeURIComponent(this.nomorInduk)}&tipe=${this.tipe}`, {
                         headers: { 'X-Requested-With': 'XMLHttpRequest' }
                     })
                     .then(res => res.json())
