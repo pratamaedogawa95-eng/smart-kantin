@@ -47,13 +47,11 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  */
 
 // LOAD OUR PATHS CONFIG FILE
-// Karena file index.php ini berada di dalam folder `public/`, 
-// kita mundur satu level ke root utama (../) untuk menemukan folder `app/`.
 require FCPATH . '../app/Config/Paths.php';
-
-$paths = new Paths();
+$paths = new Config\Paths();
 
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
-require rtrim($paths->systemDirectory, '/\\') . '/Boot.php';
+// Menggunakan path mutlak mundur satu level dari folder public ke root project
+require FCPATH . '../vendor/codeigniter4/framework/system/Boot.php';
 
 exit(Boot::bootWeb($paths));
