@@ -50,7 +50,10 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
 require ROOTPATH . 'app/Config/Paths.php';
 $paths = new Config\Paths();
 
-// LOAD THE FRAMEWORK BOOTSTRAP FILE menggunakan systemDirectory dari Paths.php
+// OVERRIDE systemDirectory agar selalu mengarah secara absolut ke folder vendor
+$paths->systemDirectory = ROOTPATH . 'vendor/codeigniter4/framework/system';
+
+// LOAD THE FRAMEWORK BOOTSTRAP FILE
 require rtrim($paths->systemDirectory, '/\\') . '/Boot.php';
 
 exit(Boot::bootWeb($paths));
