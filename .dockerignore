@@ -1,5 +1,9 @@
 .git
 vendor/
 writable/*
+!writable/cache
+!writable/logs
+!writable/session
+!writable/uploads
 .env
-README.md.
+README.md
