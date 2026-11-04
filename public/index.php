@@ -46,11 +46,11 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  *---------------------------------------------------------------
  */
 
-// LOAD OUR PATHS CONFIG FILE menggunakan ROOTPATH yang absolut
+// LOAD OUR PATHS CONFIG FILE
 require ROOTPATH . 'app/Config/Paths.php';
 $paths = new Config\Paths();
 
-// LOAD THE FRAMEWORK BOOTSTRAP FILE menggunakan ROOTPATH yang absolut
-require ROOTPATH . 'vendor/codeigniter4/framework/system/Boot.php';
+// LOAD THE FRAMEWORK BOOTSTRAP FILE menggunakan systemDirectory dari Paths.php
+require rtrim($paths->systemDirectory, '/\\') . '/Boot.php';
 
 exit(Boot::bootWeb($paths));
