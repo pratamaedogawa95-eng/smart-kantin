@@ -26,9 +26,9 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
+        'hostname'     => 'meeeimycxytimlmoetaq.supabase.co',
         'username'     => 'postgres',
-        'password'     => '',
+        'password'     => 'hdpK8da2GKdy7btR',
         'database'     => 'postgres',
         'DBDriver'     => 'Postgre',
         'DBPrefix'     => '',
