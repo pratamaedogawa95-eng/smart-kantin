@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identitas Pengunjung - Smart Kantin ITATS</title>
+    <title>Identitas Pengunjung - Smart Kantin SD MUH</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -27,8 +27,8 @@
             <div class="space-y-1.5">
                 <label class="text-xs font-bold text-slate-700">Status Pengguna</label>
                 <select name="tipe_pengguna" id="tipe_pengguna" x-model="tipe" @change="cariDataCivitas()" class="w-full bg-slate-50 border border-slate-200 rounded-2xl p-3 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
-                    <option value="mahasiswa">Mahasiswa / Siswa</option>
-                    <option value="dosen">Dosen / Staf</option>
+                    <option value="mahasiswa">Siswa</option>
+                    <option value="dosen">Guru</option>
                     <option value="umum">Tamu / Umum</option>
                 </select>
             </div>
